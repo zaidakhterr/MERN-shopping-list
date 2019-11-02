@@ -1,3 +1,3 @@
-## MERN Shopping List
+## MERN Shopping List - Api
 
-A MERN Shopping List App.
+Backend API for the [MERN Shopping List App](https://github.com/zaidakhterr/MERN-Shopping-List-Client).
