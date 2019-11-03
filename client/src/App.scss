@@ -3,3 +3,33 @@
     outline-color: #fff;
   }
 }
+
+.remove-btn {
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  line-height: 0;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 3px;
+}
+
+.shopping-list-group {
+  .fade-enter {
+    opacity: 0;
+  }
+
+  .fade-enter-active {
+    opacity: 1;
+    transition: opacity 800ms ease-out;
+  }
+
+  .fade-exit {
+    opacity: 1;
+  }
+
+  .fade-exit-active {
+    opacity: 0;
+    transition: opacity 800ms ease-in;
+  }
+}
