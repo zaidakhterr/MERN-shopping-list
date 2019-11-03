@@ -1,15 +1,29 @@
-# MERN Shopping List - Api
+# MERN Shopping List
 
-Backend API for the [MERN Shopping List App](https://github.com/zaidakhterr/MERN-Shopping-List-Client).
+Full-Stack shopping list made with the MERN Stack along with Redux.
 
-## Available Scripts
+### Availible Scripts
 
-In the project directory, you can run:
+```bash
+# Install dependencies for server
 
-### `npm run server`
+npm install
 
-Runs `node index` in production mode.
+# Install dependencies for client
 
-### `npm start`
+npm run client-install
 
-Runs `nodemon index` in development mode.
+# Run the client & server with concurrently
+
+npm run dev
+
+# Run the Express server only
+
+npm run server
+
+# Run the React client only
+
+npm run client
+
+# Server runs on http://localhost:5000 and client on http://localhost:3000
+```
