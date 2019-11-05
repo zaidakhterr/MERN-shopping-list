@@ -1,39 +1,35 @@
 import React, { Component } from 'react';
-import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
+import { connect } from 'react-redux';
+import { getItems, deleteItem } from '../redux/actions/itemActions';
+import { ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import Spinner from './Spinner';
 
 export class ShoppingList extends Component {
-  state = {
-    items: [
-      {
-        id: 1,
-        name: 'Eggs',
-      },
-      {
-        id: 2,
-        name: 'Milk',
-      },
-      {
-        id: 3,
-        name: 'Bread',
-      },
-    ],
+  componentDidMount = () => {
+    this.props.getItems();
+  };
+
+  handdleDeleteClick = id => {
+    this.props.deleteItem(id);
   };
 
   render = () => {
-    const { items } = this.state;
+    const { items, loading } = this.props;
 
     return (
-      <Container className='shopping-list'>
-        <Button color='dark' className='mb-3'>
-          Add Item
-        </Button>
+      <div className='shopping-list'>
+        {loading && <Spinner />}
         <ListGroup>
           <TransitionGroup className='shopping-list-group'>
-            {items.map(({ name, id }) => (
-              <CSSTransition key={id} timeout={500} classNames='fade'>
+            {items.map(({ name, _id }) => (
+              <CSSTransition key={_id} timeout={500} classNames='fade'>
                 <ListGroupItem>
-                  <Button className='remove-btn mr-3' color='danger' size='sm'>
+                  <Button
+                    className='remove-btn mr-3'
+                    color='danger'
+                    size='sm'
+                    onClick={this.handdleDeleteClick.bind(this, _id)}>
                     &times;
                   </Button>
                   {name}
@@ -42,9 +38,17 @@ export class ShoppingList extends Component {
             ))}
           </TransitionGroup>
         </ListGroup>
-      </Container>
+      </div>
     );
   };
 }
 
-export default ShoppingList;
+const mapStateToProps = ({ item }) => ({
+  items: item.items,
+  loading: item.loading,
+});
+
+export default connect(
+  mapStateToProps,
+  { getItems, deleteItem }
+)(ShoppingList);

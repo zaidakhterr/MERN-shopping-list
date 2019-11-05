@@ -1,17 +1,22 @@
 .toggler {
+  border: none;
+
   &:focus {
-    outline-color: #fff;
+    outline: none;
+  }
+
+  &:hover span {
+    color: rgb(206, 16, 16);
   }
 }
 
 .remove-btn {
   text-align: center;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   line-height: 0;
-  font-size: 20px;
-  font-weight: bold;
-  padding: 3px;
+  font-size: 15px;
+  padding: 2px 4px;
 }
 
 .shopping-list-group {
@@ -21,7 +26,7 @@
 
   .fade-enter-active {
     opacity: 1;
-    transition: opacity 800ms ease-out;
+    transition: opacity 500ms ease-out;
   }
 
   .fade-exit {
@@ -30,6 +35,14 @@
 
   .fade-exit-active {
     opacity: 0;
-    transition: opacity 800ms ease-in;
+    transition: opacity 500ms ease-in;
+  }
+}
+
+input[type='text'] {
+  &:active,
+  &:focus {
+    border-color: #ccc;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px #343a40;
   }
 }

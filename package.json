@@ -22,6 +22,12 @@
     "nodemon": "^1.19.4"
   },
   "eslintConfig": {
-    "extends": "eslint:recommended"
+    "extends": "eslint:recommended",
+    "env": {
+      "es6": true,
+      "commonjs": true,
+      "browser": true,
+      "node": true
+    }
   }
 }

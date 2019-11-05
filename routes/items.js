@@ -9,7 +9,7 @@ const Item = require('../models/Item');
 // @access  Public
 router.get('/', (req, res) => {
   Item.find()
-    .sort({ date: -1 })
+    .sort({ date: 1 })
     .then(items => res.send(items))
     .catch(err => console.log(err));
 });
@@ -35,7 +35,9 @@ router.delete('/:id', (req, res) => {
 
   Item.findById(id)
     .then(item => item.remove().then(() => res.json({ success: true })))
-    .catch(err => res.status(404).json({ success: false }));
+    .catch(err =>
+      res.status(404).json({ success: false, message: err.message })
+    );
 });
 
 module.exports = router;
