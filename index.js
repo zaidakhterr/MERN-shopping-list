@@ -1,11 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-const mongoURI = require('./config/keys').MONGO_URI;
-const items = require('./routes/items');
+const config = require('config');
 
 const app = express();
 const port = process.env.PORT || 5000;
+const mongoURI = config.get('MONGO_URI');
 
 //Middleware
 app.use(express.json());
@@ -22,7 +22,9 @@ mongoose
   .catch(err => console.error(err));
 
 //Use Item routes
-app.use('/items', items);
+app.use('/items', require('./routes/items'));
+app.use('/users', require('./routes/users'));
+app.use('/auth', require('./routes/auth'));
 
 //Serve static assets
 if (process.env.NODE_ENV === 'production') {
