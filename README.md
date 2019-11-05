@@ -2,7 +2,7 @@
 
 Full-Stack shopping list made with the MERN Stack along with Redux.
 
-### Availible Scripts
+## Availible Scripts
 
 ```bash
 # Install dependencies for server
