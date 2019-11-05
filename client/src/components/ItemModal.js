@@ -15,7 +15,7 @@ import { addItem } from '../redux/actions/itemActions';
 export class ItemModal extends Component {
   state = {
     modal: false,
-    name: '',
+    item: '',
   };
 
   toggle = () => {
@@ -23,9 +23,9 @@ export class ItemModal extends Component {
   };
 
   handleSubmit = e => {
-    const { name } = this.state;
+    const { item } = this.state;
     e.preventDefault();
-    if (name) this.props.addItem(name.toUpperCase());
+    if (item) this.props.addItem(item.toUpperCase());
     this.toggle();
   };
 
