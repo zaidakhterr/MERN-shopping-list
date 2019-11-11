@@ -1,4 +1,9 @@
-import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, LOADING } from '../actions/types';
+import {
+  GET_ITEMS,
+  ADD_ITEM,
+  DELETE_ITEM,
+  ITEMS_LOADING,
+} from '../actions/types';
 
 const initialState = {
   items: [],
@@ -7,7 +12,7 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case LOADING:
+    case ITEMS_LOADING:
       return {
         ...state,
         loading: true,

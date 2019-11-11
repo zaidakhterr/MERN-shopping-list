@@ -26,6 +26,7 @@ export class ItemModal extends Component {
     const { item } = this.state;
     e.preventDefault();
     if (item) this.props.addItem(item.toUpperCase());
+    this.setState({ item: '' });
     this.toggle();
   };
 

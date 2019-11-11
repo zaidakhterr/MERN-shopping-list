@@ -3,20 +3,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  p {
-    font-size: 30px;
-    margin-right: 10px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
+  position: absolute;
+  top: 19%;
+  right: 50%;
+  transform: translate(50%, 19%);
+  z-index: 1;
 
   div {
     transform: translateY(-7px);
     width: 15px;
     height: 15px;
     margin: 0px 5px;
-    background: #000;
+    background: #555;
     border-radius: 50%;
     animation: 0.9s bounce infinite alternate;
 

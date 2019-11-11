@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, LOADING } from './types';
+import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, ITEMS_LOADING } from './types';
 
-export const loading = () => ({ type: LOADING });
+export const loading = () => ({ type: ITEMS_LOADING });
 
 export const getItems = () => dispatch => {
   dispatch(loading());

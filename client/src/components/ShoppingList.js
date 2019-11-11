@@ -4,6 +4,7 @@ import { getItems, deleteItem } from '../redux/actions/itemActions';
 import { ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Spinner from './Spinner';
+import Skeleton from './Skeleton';
 
 export class ShoppingList extends Component {
   componentDidMount = () => {
@@ -19,7 +20,12 @@ export class ShoppingList extends Component {
 
     return (
       <div className='shopping-list'>
-        {loading && <Spinner />}
+        {loading && (
+          <div>
+            <Spinner />
+            <Skeleton />
+          </div>
+        )}
         <ListGroup>
           <TransitionGroup className='shopping-list-group'>
             {items.map(({ name, _id }) => (
