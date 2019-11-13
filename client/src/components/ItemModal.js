@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import {
   Button,
   Modal,
@@ -8,14 +8,14 @@ import {
   Form,
   FormGroup,
   Label,
-  Input,
-} from 'reactstrap';
-import { addItem } from '../redux/actions/itemActions';
+  Input
+} from "reactstrap";
+import { addItem } from "../redux/actions/itemActions";
 
 export class ItemModal extends Component {
   state = {
     modal: false,
-    item: '',
+    item: ""
   };
 
   toggle = () => {
@@ -23,41 +23,45 @@ export class ItemModal extends Component {
   };
 
   handleSubmit = e => {
-    const { item } = this.state;
     e.preventDefault();
+    const { item } = this.state;
     if (item) this.props.addItem(item.toUpperCase());
-    this.setState({ item: '' });
+    this.setState({ item: "" });
     this.toggle();
   };
 
   handleChange = e => {
-    console.log(e.target);
     this.setState({ [e.target.name]: e.target.value });
   };
 
   render() {
+    const { isAuthenticated } = this.props.auth;
     return (
       <div>
-        <Button color='dark' onClick={this.toggle} className='mb-3'>
-          Add Item
-        </Button>
+        {isAuthenticated ? (
+          <Button color="dark" onClick={this.toggle} className="mb-3">
+            Add Item
+          </Button>
+        ) : (
+          <h4 className="ml-1">Please Login to manage Items</h4>
+        )}
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>Add To Shopping List</ModalHeader>
           <ModalBody>
             <Form onSubmit={this.handleSubmit}>
               <FormGroup>
-                <Label for='item'>Enter Item : </Label>
+                <Label for="item">Enter Item : </Label>
                 <Input
-                  type='text'
-                  name='item'
-                  id='item'
+                  type="text"
+                  name="item"
+                  id="item"
                   value={this.state.item}
-                  placeholder='...'
+                  placeholder="..."
                   onChange={this.handleChange}
-                  autoComplete='off'
+                  autoComplete="off"
                 />
               </FormGroup>
-              <Button block color='dark'>
+              <Button block color="dark">
                 Add
               </Button>
             </Form>
@@ -68,9 +72,9 @@ export class ItemModal extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = ({ item, auth }) => ({
+  item,
+  auth
+});
 
-export default connect(
-  mapStateToProps,
-  { addItem }
-)(ItemModal);
+export default connect(mapStateToProps, { addItem })(ItemModal);

@@ -1,3 +1,17 @@
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  &:active,
+  &:focus {
+    border-color: #ccc;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px #343a40;
+  }
+}
+
+a {
+  cursor: pointer;
+}
+
 .toggler {
   border: none;
 
@@ -36,13 +50,5 @@
   .fade-exit-active {
     opacity: 0;
     transition: opacity 500ms ease-in;
-  }
-}
-
-input[type='text'] {
-  &:active,
-  &:focus {
-    border-color: #ccc;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px #343a40;
   }
 }
